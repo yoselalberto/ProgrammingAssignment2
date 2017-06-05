@@ -6,15 +6,14 @@
 # Create a matrix that caches its inverse
 
 makeCacheMatrix <- function(x = matrix()) {
-    # initialize m value
+    # initialize inverse value
     i <- NULL
-    ## Functions 
+    # set  
     set <- function(y) {
         x <<- y
         i <<- NULL
     }
     # get value
-    
     get <- function() x
     # set mean
     setinverse <- function(inverse) i <<- inverse
@@ -31,7 +30,7 @@ cacheSolve <- function(x, ...) {
     # get the value of the 'getmean' slot
     i <- x$getinverse()
     # si no es nulo devuelve lo que encontro
-    if(!is.null(i)) {
+    if (!is.null(i)) {
         message("getting cached inverse")
         return(i)
     }
