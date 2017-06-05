@@ -27,11 +27,11 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-# First, it checks if do there exist a cached inverse, if it is one, return that value;
-# otherwise, compute the inverse, and assign caches that value in the original object
+# First, it checks if exist a cached inverse, if there is one, return that value;
+# otherwise, compute the inverse, and caches that value in the object
 
 cacheSolve <- function(x, ...) {
-    # get the value of the 'get inverse' slot
+    # get the value of the 'getinverse' slot
     i <- x$getinverse()
     # if it exist, return that value with a message
     if (!is.null(i)) {
