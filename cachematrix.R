@@ -1,44 +1,48 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Functions to create, and compute the inverse of an invertible matrix; returning
+## the cached value if the matrix have not changed
 
 
 
-# Create a matrix that caches its inverse
+# Create an object containing a matrix, and slots to it inverse
 
 makeCacheMatrix <- function(x = matrix()) {
-    # initialize inverse value
+    # set inverse value to NULL
     i <- NULL
-    # set  
+    # set matrix value
     set <- function(y) {
+        # assign matrix
         x <<- y
+        # restart inverse value
         i <<- NULL
     }
-    # get value
+    # get matrix
     get <- function() x
-    # set mean
+    # set inverse matrix
     setinverse <- function(inverse) i <<- inverse
-    # get mean
+    # get inverse matrix
     getinverse <- function() i
     # return
     list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
 
 
-# Computes the inverse of the previous matrix
+# Computes the inverse of the previous matrix, and asign it to an slot; 
+# return cached value, if it exist 
 
 cacheSolve <- function(x, ...) {
-    # get the value of the 'getmean' slot
+    # get the value of the 'get inverse' slot
     i <- x$getinverse()
-    # si no es nulo devuelve lo que encontro
+    # if it exist, return that value with a message
     if (!is.null(i)) {
         message("getting cached inverse")
         return(i)
     }
-    # si es nulo extrae el objeto
+    ## if it doesn't exist, compute the inverse matrix
+    # retrieve matrix
     data <- x$get()
-    # calcula su inversa
+    # compute inverse
     i <- solve(data, ...)
-    # lo guarda en el objecto original
+    # assign inverse 
     x$setinverse(i)
     # return computed inverse
     i
