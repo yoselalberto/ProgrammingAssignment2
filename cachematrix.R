@@ -3,7 +3,8 @@
 
 
 
-# Create an object containing a matrix, and slots to it inverse
+# Create an object containing a matrix, and slots for functions to retrieve the object,
+# set, and retrieve the inverse
 
 makeCacheMatrix <- function(x = matrix()) {
     # set inverse value to NULL
@@ -26,8 +27,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-# Computes the inverse of the previous matrix, and asign it to an slot; 
-# return cached value, if it exist 
+# First, it checks if do there exist a cached inverse, if it is one, return that value;
+# otherwise, compute the inverse, and assign caches that value in the original object
 
 cacheSolve <- function(x, ...) {
     # get the value of the 'get inverse' slot
